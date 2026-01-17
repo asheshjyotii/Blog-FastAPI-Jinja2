@@ -1,0 +1,7 @@
+- [x] Basic setup using uv 
+- [x] fastapi[standard] installation using uv
+- [x] Basic route creating
+- [x] Looking at docs using /docs and /redocs
+- [x] Returning HTML contents
+- [x] Showing same content on more than one route
+- [x] Hiding non api routes on docs
