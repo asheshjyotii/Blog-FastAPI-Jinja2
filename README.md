@@ -5,3 +5,9 @@
 - [x] Returning HTML contents
 - [x] Showing same content on more than one route
 - [x] Hiding non api routes on docs
+---
+- [x] implementing Jinja2Templating
+- [x] Serving static files
+- [x] Serving Html files & template inheritance
+- [x] Passing context
+- [x] Using dynamic routes using names
