@@ -1,39 +1,42 @@
-from fastapi import FastAPI, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
-#Registering static files
-app.mount("/static",StaticFiles(directory="static"), name="static")
 
-#Registering jinja tmplating
-templates = Jinja2Templates(directory="templates")
 
-# dummy data
-posts: list[dict] = [
+reviews = [
     {
         "id": 1,
-        "author": "Ashesh Jyoti Majumdar",
-        "title": "FastAPI is Awesome",
-        "content": "This framework is really easy to use and super fast.",
-        "date_posted": "April 20, 2025",
+        "user": "Ashesh",
+        "comment": "FastAPI is extremely fast to develop with and has excellent performance out of the box.",
+        "rating": 5
     },
     {
         "id": 2,
-        "author": "Jane Doe",
-        "title": "Python is Great for Web Development",
-        "content": "Python is a great language for web development, and FastAPI makes it even better.",
-        "date_posted": "April 21, 2025",
+        "user": "Developer",
+        "comment": "Automatic Swagger documentation makes FastAPI very developer-friendly and easy to test.",
+        "rating": 5
     },
+    {
+        "id": 3,
+        "user": "Backend Engineer",
+        "comment": "FastAPI's type hints and async support make APIs clean, readable, and scalable.",
+        "rating": 4
+    }
 ]
 
 
-@app.get("/",  include_in_schema=False, name="home")
-@app.get("/posts",  include_in_schema=False, name="posts")
-def home(request : Request):
-    return templates.TemplateResponse(request, "home.html", {"posts":posts,"title":"Home"})
+@app.get("/")
+def home():
+    return {"message": "Hello World"}
 
-@app.get("/api/posts")
-def get_post():
-    return posts
+
+@app.get("/api/reviews")
+def get_reviews():
+    return reviews
+
+
+@app.get("/notification", response_class=HTMLResponse)
+def get_notificaiton():
+    return "<h1>Notification</h1>"
