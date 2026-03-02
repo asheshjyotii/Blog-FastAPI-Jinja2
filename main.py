@@ -37,6 +37,6 @@ def get_reviews():
     return reviews
 
 
-@app.get("/notification", response_class=HTMLResponse)
+@app.get("/notification", response_class=HTMLResponse, include_in_schema=False)
 def get_notificaiton():
     return "<h1>Notification</h1>"
